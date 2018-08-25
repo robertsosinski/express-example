@@ -1,0 +1,29 @@
+{
+  "env": {
+    "es6": true,
+    "node": true,
+    "mocha": true,
+    "browser": true
+  },
+  "globals": {
+    "Vue": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2017
+  },
+  "extends": "eslint:recommended",
+  "rules": {
+    "indent": 
+      ["error", 2],
+    "semi": 
+      ["error", "always"],
+    "quotes": 
+      ["error", "single"],
+    "eqeqeq":
+      ["error", "always"],
+    "linebreak-style": 
+      ["error", "unix"],
+    "no-unused-vars":
+      ["error", {"argsIgnorePattern": "^_"}]
+  }
+}
