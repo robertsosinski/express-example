@@ -5,13 +5,13 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
 
-var indexRouter = require('./web/routes/index');
-var usersRouter = require('./web/routes/users');
+var indexRouter = require('./src/routes/index');
+var usersRouter = require('./src/routes/users');
 
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'web', 'views'));
+app.set('views', path.join(__dirname, 'src', 'views'));
 app.set('view engine', 'pug');
 
 app.use(logger('dev'));
