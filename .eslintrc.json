@@ -6,7 +6,8 @@
     "browser": true
   },
   "globals": {
-    "Vue": true
+    "Vue": true,
+    "console": true
   },
   "parserOptions": {
     "ecmaVersion": 2017
@@ -24,6 +25,7 @@
     "linebreak-style": 
       ["error", "unix"],
     "no-unused-vars":
-      ["error", {"argsIgnorePattern": "^_"}]
+      ["error", {"argsIgnorePattern": "^_"}],
+    "no-nonsole": "off"
   }
 }
