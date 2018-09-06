@@ -11,7 +11,7 @@ html
     link(rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic")
 
     <script type="text/javascript">
-    | window['env'] = !{JSON.stringify(config.web.env)};
+    | window['env'] = !{JSON.stringify(web.env)};
     </script>
 
   body.skin-blue
@@ -21,4 +21,4 @@ html
     script(type="text/javascript" src="/assets/vendor/bootstrap-3.3.7/js/bootstrap.min.js")
     script(type="text/javascript" src="/assets/vendor/adminlte-2.4.5/js/adminlte.min.js")
 
-    script(type="text/javascript" src=`/${config.web.manifest['build.js']}`)
+    script(type="text/javascript" src=`/${web.manifest['build.js']}`)
