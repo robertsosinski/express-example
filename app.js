@@ -1,5 +1,6 @@
-const path    = require('path');
-const express = require('express');
+const path        = require('path');
+const express     = require('express');
+const createError = require('http-errors');
 
 var app = express();
 
@@ -7,15 +8,16 @@ app.set('root', path.resolve(__dirname));
 
 app = require(path.resolve(__dirname, 'config', 'app'))(app, express);
 app = require(path.resolve(__dirname, 'config', 'env', app.get('env')))(app, express);
-
-app.locals.config.web = {};
-app.locals.config.web.env = require(path.resolve(__dirname, '..', 'webpack-example', 'config', 'env', `${app.get('env')}.json`));
-app.locals.config.web.manifest = require(path.resolve(__dirname, '..', 'webpack-example', 'public', app.get('env'), 'manifest.json'));
+app = require(path.resolve(__dirname, 'config', 'sequelize'))(app);
 
 app.use('/',          require('./src/routes/index'));
 app.use('/web',       require('./src/routes/web/index'));
-app.use('/api/tasks', require('./src/routes/api/tasks'));
+app.use('/api/tasks', require('./src/routes/api/tasks')(app.get('sequelize')));
 app.use('/api/users', require('./src/routes/api/users'));
+
+app.use(function(req, res, next) {
+  next(createError(404));
+});
 
 app.use(function(err, req, res, _next) {
   // set locals, only providing error in development

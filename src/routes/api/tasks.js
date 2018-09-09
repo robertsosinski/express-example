@@ -1,12 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-var models = require('../../models');
+module.exports = function(db) {
+  router.get('/', function(req, res) {
+    var Task = db.Task;
 
-router.get('/', function(req, res) {
-  models.Task.findAll().then(function(tasks) {
-    res.json({data: tasks});
+    Task.findAll().then(function(tasks) {
+      res.json({data: tasks});
+    });
   });
-});
 
-module.exports = router;
+  return router;
+};

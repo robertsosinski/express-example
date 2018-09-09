@@ -1,6 +1,5 @@
 const path         = require('path');
 const cookieParser = require('cookie-parser');
-// const createError  = require('http-errors');
 
 module.exports = function(app, express) {
   var webRoot = path.resolve(app.get('root'), '..', 'webpack-example');
@@ -12,7 +11,7 @@ module.exports = function(app, express) {
     manifest: require(path.resolve(webRoot, 'public', app.get('env'), 'manifest.json')) 
   });
 
-  // app.use(express.static('assets', path.resolve(webRoot, 'public', app.get('env'))));
+  app.use(express.static(path.resolve(webRoot, 'public', app.get('env'))));
 
   app.set('views', path.resolve(app.get('root'), 'src', 'views'));
   app.set('view engine', 'pug');
@@ -22,10 +21,6 @@ module.exports = function(app, express) {
   app.use(cookieParser());
 
   app.locals.config = {data: 'yes'};
-
-  // app.use(function(req, res, next) {
-  //   next(createError(404));
-  // });
 
   return app;
 };
