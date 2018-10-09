@@ -6,6 +6,8 @@ var app = express();
 
 app.set('root', path.resolve(__dirname));
 
+app.set('database', require(path.resolve(__dirname, 'config', 'database.js'))[app.get('env')]);
+
 app = require(path.resolve(__dirname, 'config', 'app'))(app, express);
 app = require(path.resolve(__dirname, 'config', 'env', app.get('env')))(app, express);
 app = require(path.resolve(__dirname, 'config', 'sequelize'))(app);

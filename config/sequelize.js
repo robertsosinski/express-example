@@ -4,7 +4,7 @@ const Sequelize = require('sequelize');
 
 module.exports = function(app) {
   let db = {};
-  let sequelize = new Sequelize(app.get('sequelize'));
+  let sequelize = new Sequelize(app.get('database'));
   let modelPath = path.resolve(app.get('root'), 'src', 'models');
 
   fs
@@ -23,8 +23,8 @@ module.exports = function(app) {
     }
   });
 
-  db.sequelize = sequelize;
   db.Sequelize = Sequelize;
+  db.sequelize = sequelize;
 
   app.set('sequelize', db);
 
