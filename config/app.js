@@ -10,7 +10,7 @@ module.exports = function(app, express) {
     manifest: require(path.resolve(webRoot, 'public', app.get('env'), 'manifest.json')) 
   });
 
-  app.use(express.static(path.resolve(webRoot, 'public', app.get('env'))));
+  app.use('/assets', express.static(path.resolve(webRoot, 'public', app.get('env'), 'assets')));
 
   app.set('views', path.resolve(app.get('root'), 'src', 'views'));
   app.set('view engine', 'pug');
