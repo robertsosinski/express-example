@@ -12,6 +12,8 @@ app = require(path.resolve(__dirname, 'config', 'app'))(app, express);
 app = require(path.resolve(__dirname, 'config', 'env', app.get('env')))(app, express);
 app = require(path.resolve(__dirname, 'config', 'sequelize'))(app);
 
+app.use(express.static(path.resolve(app.get('root'), 'public')));
+
 app.use('/',          require('./src/routes/index'));
 app.use('/web',       require('./src/routes/web/index'));
 app.use('/api/tasks', require('./src/routes/api/tasks')(app.get('sequelize')));

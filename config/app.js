@@ -6,6 +6,7 @@ module.exports = function(app, express) {
 
   app.set('web', {
     root:     webRoot,
+    app:      require(path.resolve(webRoot, 'config', 'app.json')),
     env:      require(path.resolve(webRoot, 'config', 'env', `${app.get('env')}.json`)),
     manifest: require(path.resolve(webRoot, 'public', app.get('env'), 'manifest.json')) 
   });
